@@ -55,7 +55,10 @@ canvas.addEventListener("mousemove", e => {
 	}
 	const x = e.offsetX
 	const y = e.offsetY
-	pointData.push([{ x, y, color: COLOR, clientId: CLIENT_ID }])
+	console.log(pointData)
+	doc.transact(()=>{
+		pointData.push([{ x, y, color: COLOR, clientId: CLIENT_ID }])
+	})
 })
 
 // Clear canvas
@@ -81,7 +84,6 @@ clearAllCanvasBtn.onclick = () => clearPointsFromClient()
 
 // Animate
 const render = () => {
-	console.log(pointData.length)
 	requestAnimationFrame(render)
 	drawAllPoints(pointData)
 }

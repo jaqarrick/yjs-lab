@@ -2,7 +2,7 @@
 
 _This repo serves as an in-depth explanation of Yjs. It is for my own reference (and others if they find it useful :))._
 
-[Yjs](https://github.com/yjs/yjs) is a small, high performnt [CRDT](https://crdt.tech/implementations) implementation exposing its internal data representation as **shared types**.
+[Yjs](https://github.com/yjs/yjs) is a small, high performant [CRDT](https://crdt.tech/implementations) implementation exposing its internal data representation as **shared types**.
 
 These **shared types** include
 
@@ -68,6 +68,28 @@ The item's `content` maps to the `AbstractType` object, and the `AbstractType` o
 Each client is assigned a 53-bit integer `clientID` property on first insert. 
 All inserted items are given a unique ID, formed from the `clientID` and `clock` that counts up from 0 after first insertion. 
 
+See in [/src/utils/ID.js](https://github.com/yjs/yjs/blob/main/src/utils/ID.js):
+```
+export class ID {
+  /**
+   * @param {number} client client id
+   * @param {number} clock unique per client id, continuous number
+   */
+  constructor (client, clock) {
+    /**
+     * Client id
+     * @type {number}
+     */
+    this.client = client
+    /**
+     * unique per client id, continuous number
+     * @type {number}
+     */
+    this.clock = clock
+  }
+}
+```
+
 Items also stores references to the IDs of the preceding and succeeding item as `origin` and `originRight`, used when peers concurrently insert at the same location in a document. 
 
 ##### Multiple Characters 
@@ -80,6 +102,19 @@ Items are stored in a tree of doubly-linked lists in _document order_, where eac
 These items are _also referenced in insertion order_ inside the struct store, in chronological order. This is in order to find an item in the tree with a given ID and to efficiently gather the operations a peer is missing during sync. 
 
 **Caching**: Yjs stores a cache of the 10 most recently lookup up insert positions in the document. This helps out with performance significantly. For instance if a client wants to insert something at position 1000, it is likely that the `Item` currently at that position lives in the cache. Reducing the time from O(n) in a linear search. 
+
+##### Reference for `Item`
+
+ Property | Type | Description 
+ --- | --- | ---
+ `origin` | `ID or null` | The item that was originally to the left of current item
+ `left` | `Item or null` | The item that is currently to the left of the item
+ `right` | `Item or null` | The item that is currently to the right of this item 
+ `parent` | `String or null` | If the parent refers to the current item with a key, they key refers to the list in which to insert this item. 
+ `content` | `number` | Maps to the `AbstractType` object
+
+
+
 
 ##### Deletions in Yjs
 Deletions are handled quite differently from insertions. Insertions are a treated as a sequential operation based CRDT, whereas deletions are treated as a simpler, state based CRDT. 

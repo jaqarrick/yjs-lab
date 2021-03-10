@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start:app & npm run start:yjs",
     "start:app": "parcel -p 3000 index.html",
-    "start:yjs": "HOST=192.168.0.6 PORT=1234 npx y-websocket-server"
+    "start:yjs": "HOST=localhost PORT=1234 npx y-websocket-server"
   },
   "keywords": [],
   "author": "",
