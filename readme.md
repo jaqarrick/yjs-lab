@@ -2,6 +2,8 @@
 
 _This repo serves as an in-depth explanation of Yjs. It is for my own reference (and others if they find it useful :))._
 
+##### [Click here for an overview of CRDTs and why they exist!](https://github.com/jaqarrick/yjs-lab/blob/main/crdt.md)
+
 [Yjs](https://github.com/yjs/yjs) is a small, high performant [CRDT](https://crdt.tech/implementations) implementation exposing its internal data representation as **shared types**.
 
 These **shared types** include

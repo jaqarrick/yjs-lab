@@ -64,6 +64,7 @@ In the example of a state-based CRDT algorithm below, the entire state, in this 
 
 ![state](/images/state.png)
 
-
+#### Attributions
+Information for this section was sourced from several videos ([1](https://youtu.be/M8-WFTjZoA0), [2](https://youtu.be/B5NULPSiOGw), [3](https://www.youtube.com/watch?v=9xFfOhasiOE&t=1871s)) and websites ([crdt.tech](https://crdt.tech/), wikipedia).
 
 
