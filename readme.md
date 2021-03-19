@@ -1,6 +1,6 @@
 # YJS
 
-_This repo serves as an in-depth explanation of Yjs. It is for my own reference (and others if they find it useful :))._
+**This repo serves as an in-depth explanation of Yjs.** It is for my own reference ~ _and others if they find it useful :)_ ~
 
 ##### [Click here for an overview of CRDTs and why they exist!](https://github.com/jaqarrick/yjs-lab/blob/main/crdt.md)
 
@@ -54,7 +54,7 @@ The enclosed demo is a simple showcase of Yjs' `Y.doc` and `Y.array`, shared ove
 
 Check it out [here](https://github.com/jaqarrick/yjs-lab/tree/main/demo)!
 
-### Detailed Overview
+## Detailed Overview
 
 _This section is a summary of the following sources: [YJS Internals](https://github.com/yjs/yjs/blob/main/INTERNALS.md), "[How Yjs works from the inside out](https://www.youtube.com/watch?v=0l5XgnQ6rB4)"._ 
 
