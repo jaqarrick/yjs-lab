@@ -24,7 +24,7 @@ A possible solution to this issue is to _transform_ the operation that a user pe
 
 ![string2](/images/string2.png)
 
-This is a _extremely_ boiled down example of a method called [operational transformation](https://en.wikipedia.org/wiki/Operational_transformation), which is a solution for conflict resolution. However, this is a very _limited_ approach. Many iterations have tried and failed at solving issues where more than 2 users are editing a document, or manipulating data, at once. In fact, Google Docs uses OT, however this only works because a central _Google Server_ acts as the arbiter between multiple peers. With OT, a true multi-user editing system is very difficult. 
+This is a _extremely_ boiled down example of a ˚vmethod called [operational transformation](https://en.wikipedia.org/wiki/Operational_transformation), which is a solution for conflict resolution. However, this is a very _limited_ approach. Many iterations have tried and failed at solving issues where more than 2 users are editing a document, or manipulating data, at once. In fact, Google Docs uses OT, however this only works because a central _Google Server_ acts as the arbiter between multiple peers. With OT, a true multi-user editing system is very difficult. 
 
 Here enters CRDTs, which attempt to solve concurrency issues through resolution algorithms, allowing for a seamless multi-user editing system. 
 
@@ -83,11 +83,13 @@ Let's say a different user inserts an E in between A and B, but the timestamp is
 Yjs resolves this by looking at the id. If the clocks are the same, but the ids are different, Yjs compares them and gives preference to the lower user id. The resulting document is therefore `ACDEB`.
 
 ##### Concatenation and efficiency
-This example isn't entirely true to Yjs. 
+For efficiency, Yjs doesn't store a time stamp for every unique character, but rather stores groups of characters as items. If one user types the string 'ABC', the timestamp would be supplied to the entire string: `ABC(0,0)`. If another user wanted to insert a character 'D' in between this string, the result would be a split item: `A(0,0) D(1,1) BC(0,0)`.
+
+###### For a deeper dive into Yjs [check out this article](https://www.tag1consulting.com/blog/yjs-deep-dive-part-1).
 
 
 
 #### Attributions
-Information for this section was sourced from several videos ([1](https://youtu.be/M8-WFTjZoA0), [2](https://youtu.be/B5NULPSiOGw), [3](https://www.youtube.com/watch?v=9xFfOhasiOE&t=1871s)) and websites ([crdt.tech](https://crdt.tech/), wikipedia).
+Information for this section was sourced from several videos ([1](https://youtu.be/M8-WFTjZoA0), [2](https://youtu.be/B5NULPSiOGw), [3](https://www.youtube.com/watch?v=9xFfOhasiOE&t=1871s)) websites ([crdt.tech](https://crdt.tech/), wikipedia), and tag1's [Yjs Deep Dive](https://www.tag1consulting.com/blog/yjs-deep-dive-part-1).
 
 
