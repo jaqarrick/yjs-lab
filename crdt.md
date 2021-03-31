@@ -24,7 +24,7 @@ A possible solution to this issue is to _transform_ the operation that a user pe
 
 ![string2](/images/string2.png)
 
-This is a _extremely_ boiled down example of a ˚vmethod called [operational transformation](https://en.wikipedia.org/wiki/Operational_transformation), which is a solution for conflict resolution. However, this is a very _limited_ approach. Many iterations have tried and failed at solving issues where more than 2 users are editing a document, or manipulating data, at once. In fact, Google Docs uses OT, however this only works because a central _Google Server_ acts as the arbiter between multiple peers. With OT, a true multi-user editing system is very difficult. 
+This is a _extremely_ boiled down example of a method called [operational transformation](https://en.wikipedia.org/wiki/Operational_transformation), which is a solution for conflict resolution. However, this is a very _limited_ approach. Many iterations have tried and failed at solving issues where more than 2 users are editing a document, or manipulating data, at once. In fact, Google Docs uses OT, however this only works because a central _Google Server_ acts as the arbiter between multiple peers. With OT, a true multi-user editing system is very difficult. 
 
 Here enters CRDTs, which attempt to solve concurrency issues through resolution algorithms, allowing for a seamless multi-user editing system. 
 
